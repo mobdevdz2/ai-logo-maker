@@ -18,7 +18,7 @@ export async function GET(request: Request, { params }: SitemapContextProps) {
   const emojis = await getEmojis({
     take: SITEMAP_PAGE_SIZE,
     skip: page * SITEMAP_PAGE_SIZE,
-    orderBy: { createdAt: Prisma.SortOrder.asc },
+    orderBy: "createdAt",
   })
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
@@ -28,7 +28,7 @@ export async function GET(request: Request, { params }: SitemapContextProps) {
         (emoji) => `
       <url>
         <loc>${PROD_URL}/p/${emoji.id}</loc>
-        <lastmod>${emoji.updatedAt.toISOString()}</lastmod>
+        <lastmod>${emoji.updatedAt?.toISOString()}</lastmod>
       </url>
     `
       )

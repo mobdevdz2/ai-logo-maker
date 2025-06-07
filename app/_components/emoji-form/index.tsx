@@ -3,7 +3,7 @@
 import { useActionState, useEffect, useRef, useState } from "react"
 import { createEmoji, FormState } from "./action"
 import { SubmitButton } from "./submit-button"
-import toast from "sonner"
+import {toast} from "sonner"
 import useSWR from "swr"
 
 interface EmojiFormProps {
